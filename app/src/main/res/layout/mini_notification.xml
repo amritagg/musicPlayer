@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginVertical="8dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/music"
+                android:contentDescription="@string/icon" />
+
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="12sp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.Compat.Notification.Title" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/song_name_notif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="16dp"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            tools:text="Closer.mp3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp" >
+
+        <Button
+            android:id="@+id/previous_noti"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/previous"
+            android:layout_marginHorizontal="16dp"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/play_pause_noti"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/pause"
+            android:layout_marginHorizontal="16dp"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/next_noti"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/next"
+            android:layout_marginEnd="24dp"
+            style="?android:attr/buttonBarButtonStyle" />
+
+    </LinearLayout>
+
+</LinearLayout>

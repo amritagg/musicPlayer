@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="colorPrimary">#0277BD</color>
+    <color name="colorPrimaryDark">#01579B</color>
+    <color name="colorAccent">#81D4FA</color>
+    <color name="splash_icon">#000000</color>
+    <color name="splash_back">#ffffff</color>
+    <color name="icon">#000000</color>
+    <color name="grey">#EEEEEE</color>
+
+</resources>

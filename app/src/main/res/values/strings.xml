@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Music Player</string>
+    <string name="image">Image</string>
+    <string name="musicicon">musicIcon</string>
+    <string name="current_song_image">Current Song Image</string>
+    <string name="notification_image">Notification_image</string>
+    <string name="icon">ICON</string>
+</resources>

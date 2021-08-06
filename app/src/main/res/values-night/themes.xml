@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MusicPlayer" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">#0091EA</item>
+    </style>
+
+    <style name="splashScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="android:windowBackground">@drawable/splash_image</item>
+        <item name="android:statusBarColor">@color/splash_back</item>
+
+    </style>
+
+</resources>
