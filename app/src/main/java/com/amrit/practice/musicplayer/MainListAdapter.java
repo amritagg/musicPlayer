@@ -2,37 +2,27 @@ package com.amrit.practice.musicplayer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.util.Log;
-import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainListAdapter extends BaseAdapter {
 
-    private static final String LOG = MainListAdapter.class.getSimpleName();
-
-    private final ArrayList<String> musicName;
     private final Context context;
-    private final ArrayList<String> musicUri;
+    private final ArrayList<AudioUtil> audioUtils;
 
-    public MainListAdapter(Context context, ArrayList<String> musicName, ArrayList<String> musicUri) {
-        this.musicName = musicName;
+    public MainListAdapter(Context context, ArrayList<AudioUtil> audioUtils) {
         this.context = context;
-        this.musicUri = musicUri;
+        this.audioUtils = audioUtils;
     }
 
     @Override
     public int getCount() {
-        return musicName.size();
+        return audioUtils.size();
     }
 
     @Override
@@ -60,23 +50,22 @@ public class MainListAdapter extends BaseAdapter {
         ImageView imageView = convertView.findViewById(R.id.image_view);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-        String name = musicName.get(position);
+        String name = audioUtils.get(position).getTitle();
         songName.setText(name);
 
-        Bitmap bitmap = null;
-
-        Uri uri = Uri.parse(musicUri.get(position));
-        try {
-            bitmap = context.getContentResolver().loadThumbnail(
-                    uri,
-                    new Size(100, 100),
-                    null);
-        } catch (IOException e) {
-            Log.e(LOG, "Bitmap not available");
-        }
-
-        if(bitmap != null) imageView.setImageBitmap(bitmap);
-        else imageView.setImageDrawable(context.getDrawable(R.drawable.music));
+//        Bitmap bitmap = null;
+//        Uri uri = Uri.parse(audioUtils.get(position).getUri());
+//        try {
+//            bitmap = context.getContentResolver().loadThumbnail(
+//                    uri,
+//                    new Size(100, 100),
+//                    null);
+//        } catch (IOException e) {
+//            Log.e(LOG, "Bitmap not available");
+//        }
+//        if(bitmap != null) imageView.setImageBitmap(bitmap);
+//        else
+        imageView.setImageDrawable(context.getDrawable(R.drawable.music));
 
         return convertView;
     }
