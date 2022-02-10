@@ -3,8 +3,6 @@ package com.amrit.practice.musicplayer;
 import android.content.Context;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
@@ -44,7 +42,7 @@ public class AudioLoader extends AsyncTaskLoader<ArrayList<AudioUtil>> {
             if (singleFile.isDirectory() && !singleFile.isHidden()) {
                 songsList.addAll(getSongs(singleFile));
             } else {
-                if ((singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".m4a")) && !singleFile.getName().startsWith("Call@")) {
+                if(AudioUtil.isAudio(singleFile.getName()) && !singleFile.getName().startsWith("Call@")){
                     AudioUtil audioUtil = getSongMetaData(singleFile);
                     if(audioUtil != null) songsList.add(getSongMetaData(singleFile));
                 }
@@ -64,6 +62,10 @@ public class AudioLoader extends AsyncTaskLoader<ArrayList<AudioUtil>> {
         String album = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
         String artist = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
         String genre = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
+
+        if (album == null) album = "Unknown Album";
+        if (artist == null) artist = "Unknown Artist";
+        if (genre == null) genre = "Unknown Genre";
 
         int duration = Integer.parseInt(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)) / 1000;
 

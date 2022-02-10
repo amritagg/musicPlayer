@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainListAdapter extends BaseAdapter {
@@ -35,7 +37,7 @@ public class MainListAdapter extends BaseAdapter {
         return position;
     }
 
-    @SuppressLint({"InflateParams", "UseCompatLoadingForDrawables"})
+    @SuppressLint({"InflateParams", "UseCompatLoadingForDrawables", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -46,12 +48,19 @@ public class MainListAdapter extends BaseAdapter {
         }
 
         TextView songName = convertView.findViewById(R.id.song_name);
+        TextView songArtist = convertView.findViewById(R.id.song_artist);
+        TextView songDuration = convertView.findViewById(R.id.song_duration);
+
         songName.setSelected(true);
         ImageView imageView = convertView.findViewById(R.id.image_view);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         String name = audioUtils.get(position).getTitle();
+        String artist = audioUtils.get(position).getArtist();
+        int timeDuration = audioUtils.get(position).getDuration();
         songName.setText(name);
+        songArtist.setText(artist);
+        songDuration.setText(timeDuration / 60 + ":" + (new DecimalFormat("00").format(timeDuration % 60)));
 
 //        Bitmap bitmap = null;
 //        Uri uri = Uri.parse(audioUtils.get(position).getUri());

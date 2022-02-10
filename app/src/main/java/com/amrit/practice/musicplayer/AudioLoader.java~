@@ -36,16 +36,15 @@ public class AudioLoader extends AsyncTaskLoader<ArrayList<AudioUtil>> {
     }
 
     private ArrayList<AudioUtil> getSongs(File root) {
-        Log.e(LOG_TAG, "DOne");
         ArrayList<AudioUtil> songsList = new ArrayList<>();
         File[] files = root.listFiles();
         assert files != null;
         for (File singleFile : files) {
+            if(singleFile.getAbsolutePath().startsWith(file + "/Android")) continue;
             if (singleFile.isDirectory() && !singleFile.isHidden()) {
                 songsList.addAll(getSongs(singleFile));
             } else {
-                if ((singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".m4a"))
-                        && !singleFile.getName().startsWith("Call@")) {
+                if(AudioUtil.isAudio(singleFile.getName()) && !singleFile.getName().startsWith("Call@")){
                     AudioUtil audioUtil = getSongMetaData(singleFile);
                     if(audioUtil != null) songsList.add(getSongMetaData(singleFile));
                 }
@@ -65,6 +64,10 @@ public class AudioLoader extends AsyncTaskLoader<ArrayList<AudioUtil>> {
         String album = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
         String artist = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
         String genre = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
+
+        if (album == null) album = "Unknown Album";
+        if (artist == null) artist = "Unknown Artist";
+        if (genre == null) genre = "Unknown Genre";
 
         int duration = Integer.parseInt(metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)) / 1000;
 

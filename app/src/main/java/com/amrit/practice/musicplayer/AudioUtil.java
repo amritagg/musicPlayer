@@ -58,4 +58,11 @@ public class AudioUtil {
         this.duration = duration;
     }
 
+    public static boolean isAudio(String name){
+
+        String[] ext = {".mp3", ".wav", ".amr", ".flac", ".aac", ".ogg", ".opus", ".m4a"};
+        for (String s : ext) if (name.endsWith(s)) return true;
+        return false;
+    }
+
 }
